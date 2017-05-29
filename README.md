@@ -1,3 +1,3 @@
 # ssh-base
-ssh-base 系列123456
+ssh-base 系列
 
