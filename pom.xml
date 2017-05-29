@@ -12,7 +12,7 @@
 		<!-- hibernate版本号 -->
 		<hibernate.version>5.2.8.Final</hibernate.version>
 		<!-- jdk版本 -->
-		<jdk.version>1.8</jdk.version>
+		<jdk.version>1.8</jdk.version> 
 	</properties>
 
 	<dependencies>
