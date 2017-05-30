@@ -5,7 +5,7 @@ import org.kd.ssh.page.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @SuppressWarnings("all")
-public class BaseActionPlus<T> extends BaseAction<T> {
+public class BaseActionReturnPlus<T> extends BaseAction<T> {
 
 	@Autowired
 	BaseService<T> baService;
@@ -56,9 +56,11 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	 */
 	public String updateUI() {
 		this.kdField = this.setField();
-		request.setAttribute("user", baService.getById(kdField));// 在准备跳转的页面上放值${user.uId}
+		request.setAttribute("model", baService.getById(kdField));// 在准备跳转的页面上放值${user.uId}
 		return "updateUI";
 	}
+
+	
 
 	/**
 	 * @功能:查询所有
@@ -67,19 +69,12 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	 * @return
 	 */
 	public String list() {
+		PageBean pageList = baService.queryPageList(pageNum, pageSize);
+		request.setAttribute("pageList", pageList);
 		return "list";
 	}
 
 	
-
-	
-	public String ajaxList() {
-		PageBean pageList = baService.queryPageList(pageNum, pageSize);
-		jsonMap.put("code", 1);
-		jsonMap.put("msg", "success");
-		jsonMap.put("pageList", pageList);
-		return "ajax";
-	}
 
 	/**
 	 * @功能:获取单个实体类数据
@@ -100,7 +95,7 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	 */
 	public String save() {
 		baService.save(model);
-		return "ajax";
+		return "toList";
 	}
 
 	/**
@@ -111,7 +106,7 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	 */
 	public String delete() {
 		baService.delete(this.setField());
-		return "ajax";
+		return "toList";
 	}
 
 	/**
@@ -122,7 +117,7 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	 */
 	public String update() {
 		baService.update(model);
-		return "ajax";
+		return "toList";
 	}
 
 	public Integer gettId() {
