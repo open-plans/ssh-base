@@ -19,7 +19,8 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	 * @return
 	 */
 	public Integer setField() {
-		return getIdField("tId");
+		//return getIdField("tId");
+		return getIdField("Id");
 	}
 
 	/**
@@ -73,14 +74,34 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	
 
 	
+	/**
+	 *  @功能:ajax  分页 list
+	 *  @作者:柯栋 @代号:隐无为
+	 *  @时间:2017年3月29日
+	 *  @return  
+	 */
 	public String ajaxList() {
-		PageBean pageList = baService.queryPageList(pageNum, pageSize);
+		PageBean page = baService.queryPageList(pageNum, pageSize);
 		jsonMap.put("code", 1);
 		jsonMap.put("msg", "success");
-		jsonMap.put("pageList", pageList);
+		jsonMap.put("page", page);
 		return "ajax";
 	}
 
+	/**
+	 *  @功能:ajax  查询 所有 list
+	 *  @作者:柯栋 @代号:隐无为
+	 *  @时间:2017年3月29日
+	 *  @return  
+	 */
+	public String allAjaxList() {
+		jsonMap.put("code", 1);
+		jsonMap.put("msg", "success");
+		jsonMap.put("list", baService.queryAllList());
+		return "ajax";
+	}
+	
+	
 	/**
 	 * @功能:获取单个实体类数据
 	 * @作者:柯栋 @代号:隐无为

@@ -1,6 +1,7 @@
 package org.kd.ssh.base.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 
@@ -21,7 +22,10 @@ public interface BaseDao<T>
 	
 	// 分页  pageSize 页数  pageNum 页码
 	public List<T> queryPageList(Integer  pageNum,Integer pageSize);
-	
+	// 分页 条件查询
+	public List<T> queryPageParamsList(Integer pageNum, Integer pageSize,String whereSql, Map<String, Object>map);
+	// 条件查询（所有）
+	public List<T> queryParamsAllList(String whereSql, Map<String, Object>map);
 	// 查询总条数
 	public Long getCount();
 }

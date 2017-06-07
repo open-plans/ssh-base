@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BaseActionReturnPlus<T> extends BaseAction<T> {
 
 	@Autowired
-	BaseService<T> baService;
+    BaseService<T> baService;
 
 	protected Integer kdField;
 
@@ -19,7 +19,8 @@ public class BaseActionReturnPlus<T> extends BaseAction<T> {
 	 * @return
 	 */
 	public Integer setField() {
-		return getIdField("tId");
+		//return getIdField("tId");
+		return getIdField("Id");
 	}
 
 	/**
@@ -69,12 +70,15 @@ public class BaseActionReturnPlus<T> extends BaseAction<T> {
 	 * @return
 	 */
 	public String list() {
-		PageBean pageList = baService.queryPageList(pageNum, pageSize);
-		request.setAttribute("pageList", pageList);
+		PageBean page = baService.queryPageList(pageNum, pageSize);
+		request.setAttribute("page", page);
 		return "list";
 	}
 
-	
+	public String allList() {
+		request.setAttribute("list", baService.queryAllList());
+		return "allList";
+	}
 
 	/**
 	 * @功能:获取单个实体类数据
