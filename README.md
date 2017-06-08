@@ -10,7 +10,7 @@ look me ！
 	<dependency>
 	  <groupId>org.kd</groupId>
 	  <artifactId>ssh-base</artifactId>
-	  <version>1.0.0-M8</version>
+	  <version>1.0.0-M9</version>
 	</dependency>
 ``` 
 
