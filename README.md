@@ -15,6 +15,7 @@ look me ！
 ``` 
 
 # how use
+<<<<<<< HEAD
 ```xml 
  	<!-- base 系列 要注入的 -->
     <context:component-scan base-package="org.kd.ssh.base" />
