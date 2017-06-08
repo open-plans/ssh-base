@@ -15,6 +15,21 @@ look me ！
 ``` 
 
 # how use
+```xml 
+ 	<!-- base 系列 要注入的 -->
+    <context:component-scan base-package="org.kd.ssh.base" />
+ ``` 
+
+```xml  
+	<aop:config>
+		<aop:pointcut id="transactionPointcut"
+			expression="execution(* org.kd.service.impl.*.*(..))" />
+		<aop:advisor pointcut-ref="transactionPointcut"
+			advice-ref="transactionAdvice" />
+	<!-- base aop -->
+	<aop:advisor pointcut="execution(* org.kd.ssh.base.service..*Impl.*(..))" advice-ref="transactionAdvice" />
+	</aop:config>
+``` 
 
  action      exetend BaseAction or BaseActionPlus
  
