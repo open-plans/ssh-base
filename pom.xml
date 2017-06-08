@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.kd</groupId>
 	<artifactId>ssh-base</artifactId>
-	<version>1.0.0-M7</version>
+	<version>1.0.0-M8</version>
 	<properties>
 		<!-- struts2 版本号 -->
 		<struts2.version>2.3.32</struts2.version>

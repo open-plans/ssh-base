@@ -10,12 +10,11 @@ look me ！
 	<dependency>
 	  <groupId>org.kd</groupId>
 	  <artifactId>ssh-base</artifactId>
-	  <version>1.0.0-M7</version>
+	  <version>1.0.0-M8</version>
 	</dependency>
 ``` 
 
 # how use
-<<<<<<< HEAD
 ```xml 
  	<!-- base 系列 要注入的 -->
     <context:component-scan base-package="org.kd.ssh.base" />
