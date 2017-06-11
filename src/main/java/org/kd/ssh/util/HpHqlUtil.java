@@ -23,11 +23,24 @@ public class HpHqlUtil {
 	 *  @return  
 	 */
 	public static String getWhereHql(Map<String, Object>map){
-		String whereHql="where 1=1 ";
+		String whereHql="";
 		for (Entry<String, Object> item : map.entrySet()) {
 			whereHql+=" and "+item.getKey()+"=?";
 		}
 		return whereHql;
 	}
+	
+	
+	/**
+	 *  @功能:获取get set 方法
+	 *  @作者:柯栋 @代号:隐无为
+	 *  @时间:2017年2月24日
+	 *  @return  
+	 */
+	public static String getFieldMethod(String prefix,String field){
+		String str=prefix+field.substring(0, 1).toUpperCase() + field.substring(1);
+		return str;
+	}
+	
 
 }

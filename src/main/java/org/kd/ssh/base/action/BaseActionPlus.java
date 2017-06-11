@@ -22,6 +22,17 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 		//return getIdField("tId");
 		return getIdField("Id");
 	}
+	
+	/**
+	 * @功能: 设置id属性
+	 * @作者:柯栋 @代号:隐无为
+	 * @时间:2017年3月29日
+	 * @return
+	 */
+	public String setFieldByString() {
+		//return getIdField("tId");
+		return getIdFieldByString("Id");
+	}
 
 	/**
 	 * @功能: 获取id
@@ -39,6 +50,22 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 		return tid;
 	}
 
+	/**
+	 * @功能: 获取id
+	 * @作者:柯栋 @代号:隐无为
+	 * @时间:2017年3月29日
+	 * @return
+	 */
+	public String getIdFieldByString(String fieldName) {
+		String tid = null;
+		try {
+			tid = (String) model.getClass().getDeclaredMethod("get" + fieldName, null).invoke(model);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tid;
+	}
+	
 	/**
 	 * @功能:添加页面
 	 * @作者:柯栋 @代号:隐无为
@@ -60,6 +87,18 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 		request.setAttribute("user", baService.getById(kdField));// 在准备跳转的页面上放值${user.uId}
 		return "updateUI";
 	}
+	
+	/**
+	 * @功能:编辑页面
+	 * @作者:柯栋 @代号:隐无为
+	 * @时间:2017年3月29日
+	 * @return
+	 */
+	public String updateUIByString() {
+		request.setAttribute("user", baService.getById(this.setFieldByString()));// 在准备跳转的页面上放值${user.uId}
+		return "updateUI";
+	}
+	
 
 	/**
 	 * @功能:查询所有
@@ -112,6 +151,9 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 		request.setAttribute("flag", "kd");// 在准备跳转的页面上放值${flag}
 		return "list";
 	}
+	
+	
+
 
 	/**
 	 * @功能:保存
@@ -125,13 +167,45 @@ public class BaseActionPlus<T> extends BaseAction<T> {
 	}
 
 	/**
-	 * @功能:删除
+	 * @功能:真删除
 	 * @作者:柯栋 @代号:隐无为
 	 * @时间:2017年3月29日
 	 * @return
 	 */
 	public String delete() {
 		baService.delete(this.setField());
+		return "ajax";
+	}
+	
+	/**
+	 * @功能:真删除(String)
+	 * @作者:柯栋 @代号:隐无为
+	 * @时间:2017年3月29日
+	 * @return
+	 */
+	public String deleteByString() {
+		baService.delete(this.setFieldByString());
+		return "ajax";
+	}
+	
+	/**
+	 * @功能:假删除
+	 * @作者:柯栋 @代号:隐无为
+	 * @时间:2017年3月29日
+	 * @return
+	 */
+	public String updateDelete() {
+		baService.updateDelete(this.setField());
+		return "ajax";
+	}
+	/**
+	 * @功能:假删除
+	 * @作者:柯栋 @代号:隐无为
+	 * @时间:2017年3月29日
+	 * @return
+	 */
+	public String updateDeleteByString() {
+		baService.updateDelete(this.setFieldByString());
 		return "ajax";
 	}
 

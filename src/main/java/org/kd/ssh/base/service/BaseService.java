@@ -24,4 +24,16 @@ public interface BaseService<T>
 	public PageBean<T> queryPageParamsList(Integer pageNum, Integer pageSize,String whereSql, Map<String, Object>map);
 	// 条件查询（所有）
 	public List<T> queryParamsAllList(String whereSql, Map<String, Object>map);
+	
+	// 逻辑删除
+	public void updateDelete(Integer id);
+	
+	
+	// 真删(String)
+	public void delete(String id); 
+	// 查询单个(String)
+	public T getById(String id);
+	// 逻辑删除(String)
+	public void updateDelete(String id);
+	
 }

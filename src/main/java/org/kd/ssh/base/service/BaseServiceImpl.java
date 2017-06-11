@@ -26,6 +26,13 @@ public class BaseServiceImpl<T> implements BaseService<T>
 		baseDao.delete(id);
 
 	}
+	
+	@Override
+	public void delete(String id)
+	{
+		baseDao.delete(id);
+
+	}
 
 	@Override
 	public void update(T model)
@@ -45,6 +52,11 @@ public class BaseServiceImpl<T> implements BaseService<T>
 	{
 		return baseDao.getById(id);
 	}
+	@Override
+	public T getById(String id)
+	{
+		return baseDao.getById(id);
+	}
 
 	@Override
 	public PageBean<T> queryPageList(Integer pageNum, Integer pageSize) {
@@ -56,7 +68,7 @@ public class BaseServiceImpl<T> implements BaseService<T>
 	@Override
 	public PageBean<T> queryPageParamsList(Integer pageNum, Integer pageSize, String whereSql, Map<String, Object> map) {
 		List<T> list=baseDao.queryPageParamsList(pageNum, pageSize,whereSql,map);
-		Long total=baseDao.getCount();
+		Long total=baseDao.getWhereHqlCount(whereSql,map);
 		return new PageBean<T>(pageSize, pageNum, total, list);
 	}
 
@@ -64,6 +76,16 @@ public class BaseServiceImpl<T> implements BaseService<T>
 	public List<T> queryParamsAllList(String whereSql, Map<String, Object> map) {
 		List<T> list=baseDao.queryParamsAllList(whereSql,map);
 		return list;
+	}
+
+	@Override
+	public void updateDelete(Integer id) {
+		 baseDao.updateDelete(id);
+	}
+	
+	@Override
+	public void updateDelete(String id) {
+		baseDao.updateDelete(id);
 	}
 
 }
